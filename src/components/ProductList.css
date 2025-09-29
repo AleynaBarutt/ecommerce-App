@@ -1,0 +1,15 @@
+/* src/components/ProductList.css */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+  padding: 40px;
+}
+.center.error { color: #b00020; }
