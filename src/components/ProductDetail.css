@@ -1,0 +1,21 @@
+/* src/components/ProductDetail.css */
+.product-detail {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.product-detail__image {
+  max-width: 100%;
+  display: block;
+  margin: 16px 0;
+}
+
+.product-detail__price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 12px;
+}

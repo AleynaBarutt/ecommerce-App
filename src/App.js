@@ -1,21 +1,42 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import ProductDetail from "./components/ProductDetail";
+import Cart from "./pages/Cart";
+import { CartProvider, useCart } from "./context/CartContext";
+import "./components/Navbar.css";
 
-import React from 'react';
-import ProductList from './components/ProductList';
-import './App.css';
+// Navbar component
+function Navbar() {
+  const { cart } = useCart();
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-//App ana bileşeni. Tarayıcıya gösterilecek ana yapı burada.
+  return (
+    <nav className="navbar">
+  
+      <Link to="/">
+        Ana Sayfa
+      </Link>
+      <Link to="/cart" className="cart">
+        🛒 Sepet ({totalItems})
+      </Link>
+    </nav>
+  );
+}
+
 function App() {
   return (
-    <main className="app">
-      <header className="app-header">
-        <h1>React E-Commerce Demo</h1>
-      </header>
-
-      <ProductList />
-    </main>
+    <CartProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
-} 
+}
 
-//Bu bileşeni dışa aktarıyoruz ki index.js render edebilsin.
 export default App;
-
